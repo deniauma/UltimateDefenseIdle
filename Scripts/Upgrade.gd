@@ -1,13 +1,13 @@
 class_name Upgrade
 
 var name: String
-var base_value: int
+var base_value: float
 var base_price: int
-var value_per_level: int
+var value_per_level: float
 var multiplier: float
 var level: int = 0
 
-func _init(name:String, baseValue: int, basePrice: int, vPerLvl: int, multiply: float = 1.10):
+func _init(name:String, baseValue: float, basePrice: int, vPerLvl: float, multiply: float = 1.10):
 	self.name = name
 	base_value = baseValue
 	base_price = basePrice
@@ -27,6 +27,7 @@ func buy_next_upgrade():
 		level += 1
 		GameState.update_player_stats()
 
-func get_current_total_value() -> int:
+func get_current_total_value():
+	#print(name + " , lv " + str(level) + " = " + str(base_value + level * value_per_level))
 	return base_value + level * value_per_level
 

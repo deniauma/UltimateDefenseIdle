@@ -62,6 +62,8 @@ func _physics_process(delta):
 	wave_progress.value = wave_size - wave_remaining
 	if GameState.current_wave < GameState.max_wave or wave_remaining == 0:
 		next_btn.disabled = false
+		if not farming:
+			on_next_wave_click()
 	else:
 		next_btn.disabled = true
 	prev_btn.disabled = (GameState.current_wave == 1)

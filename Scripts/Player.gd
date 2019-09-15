@@ -12,6 +12,7 @@ func _ready():
 	
 func _physics_process(delta):
 	$AreaDetection/AreaRadius.shape.radius = GameState.player_radius
+	$AttackDelay.wait_time = GameState.player_attack_delay
 
 func on_enemy_detected(body):
 	detected_enemies.append(body.get_path())
