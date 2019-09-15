@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UpgradesUI.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UpgradeLine.tscn" type="PackedScene" id=2]
+
+[node name="UpgradesUI" type="Control"]
+margin_right = 100.0
+script = ExtResource( 1 )
+
+[node name="UpgradesBar" type="VBoxContainer" parent="."]
+margin_left = 13.5661
+margin_top = 268.975
+margin_right = 113.566
+margin_bottom = 308.975
+
+[node name="upgradesBtn" type="Button" parent="UpgradesBar"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+text = "Upgrades"
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+visible = true
+margin_left = 267.229
+margin_top = 112.026
+margin_right = 767.229
+margin_bottom = 412.026
+rect_min_size = Vector2( 500, 300 )
+
+[node name="TabContainer" type="TabContainer" parent="PopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 496.0
+margin_bottom = 296.0
+tab_align = 0
+
+[node name="Attack" type="VBoxContainer" parent="PopupPanel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/separation = 20
+
+[node name="ProjDmg" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
+margin_bottom = 32.0
+
+[node name="ProjSpd" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
+margin_top = 52.0
+margin_bottom = 84.0
+
+[node name="DetectRadius" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
+margin_top = 104.0
+margin_bottom = 136.0
+
+[node name="AtkDelay" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
+margin_top = 156.0
+margin_bottom = 188.0
+
+[node name="Defense" type="VBoxContainer" parent="PopupPanel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0

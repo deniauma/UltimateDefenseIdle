@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Assets/spaceShips_003.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.943436, 1.03457 )
+
+[node name="Enemy" type="KinematicBody2D"]
+position = Vector2( 566, 168 )
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 1 )
+hp = 10
+speed = 100
+
+[node name="Mesh" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
