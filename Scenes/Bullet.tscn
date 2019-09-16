@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Assets/spaceMissiles_016.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.21915, 12.5194 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 100.0
 
 [node name="Bullet" type="KinematicBody2D"]
 collision_layer = 4
@@ -31,3 +34,8 @@ shape = SubResource( 1 )
 
 [node name="TTL" type="Timer" parent="."]
 autostart = true
+
+[node name="AoE" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AoE"]
+shape = SubResource( 2 )

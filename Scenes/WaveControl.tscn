@@ -58,4 +58,5 @@ alignment = 1
 margin_left = 8.0
 margin_right = 188.0
 margin_bottom = 40.0
+focus_mode = 0
 text = "Farming mode: "

@@ -66,3 +66,8 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+custom_constants/separation = 20
+
+[node name="UpgHP" parent="PopupPanel/TabContainer/Defense" instance=ExtResource( 2 )]
+
+[node name="UpgDef" parent="PopupPanel/TabContainer/Defense" instance=ExtResource( 2 )]

@@ -20,7 +20,9 @@ func _physics_process(delta):
 
 
 func on_hit(body):
-	body.take_damage(damage)
+	for enemy in $AoE.get_overlapping_bodies():
+		enemy.take_damage(damage)
+	#body.take_damage(damage)
 	queue_free()
 	
 func self_destroy():

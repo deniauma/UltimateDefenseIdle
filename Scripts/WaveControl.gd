@@ -29,6 +29,7 @@ func _ready():
 	
 func prepare_wave(level):
 	get_tree().call_group("enemies", "queue_free")
+	GameState.hp = GameState.total_hp
 	wave_hp = GameState.get_wave_hp(level)
 	wave_damage = GameState.get_wave_damage(level)
 	wave_size = GameState.get_wave_density(level)
@@ -60,6 +61,11 @@ func on_enemy_die():
 	
 func _physics_process(delta):
 	wave_progress.value = wave_size - wave_remaining
+	if GameState.hp == 0:
+		on_prev_wave_click()
+		GameState.hp = GameState.total_hp
+		on_farming_mode_click(true)
+		farming_toggle.pressed = true
 	if GameState.current_wave < GameState.max_wave or wave_remaining == 0:
 		next_btn.disabled = false
 		if not farming:
