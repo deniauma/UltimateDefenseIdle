@@ -11,8 +11,6 @@ position = Vector2( 566, 168 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
-hp = 10
-speed = 100
 
 [node name="Mesh" type="Sprite" parent="."]
 scale = Vector2( 0.2, 0.2 )

@@ -6,6 +6,8 @@ func _ready():
 	$Player.connect("body_entered", self, "on_player_contact")
 	$HUD/WaveControl.spawn_in_tree = $WaveManager
 	update_ui_hp()
+	var game_save = GameSave.new()
+	game_save.save_game()
 	
 func _physics_process(delta):
 	$HUD/EnemiesDestroyed/Number.text = str(GameState.destroyed_enemies)

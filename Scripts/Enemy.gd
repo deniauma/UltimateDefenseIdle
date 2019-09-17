@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
+class_name Enemy
+
 signal die
 
-export (int) var hp = 50
-export (int) var damage = 1
-export (int) var speed = 50
-export (Vector2) var target = Vector2()
+var hp = 50
+var damage = 1
+var speed = GameState.enemy_base_speed
+var target = Vector2()
 var velocity = Vector2()
 
 func _ready():

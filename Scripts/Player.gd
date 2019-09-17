@@ -1,22 +1,16 @@
 extends Area2D
 
 const bullet = preload("res://Scenes/Bullet.tscn")
-var detected_enemies = []
 
 onready var detect_radius = $AreaDetection/AreaRadius.shape.radius
 
 func _ready():
 	add_to_group("player")
-	$AreaDetection.connect("body_entered", self, "on_enemy_detected")
 	$AttackDelay.connect("timeout", self, "attack_enemy")
 	
 func _physics_process(delta):
 	$AreaDetection/AreaRadius.shape.radius = GameState.player_radius
 	$AttackDelay.wait_time = GameState.player_attack_delay
-
-func on_enemy_detected(body):
-	detected_enemies.append(body.get_path())
-
 	
 func attack_enemy():
 	var target = choose_target()
@@ -24,6 +18,8 @@ func attack_enemy():
 		var new_bullet = bullet.instance()
 		new_bullet.target = target.global_position
 		call_deferred("add_child", new_bullet)
+		var target_dir = (target.global_position - global_position).normalized()
+		$Tower/Turret.rotation = Vector2(0, -1).angle_to(target_dir)
 #	var shoot = false
 #	while not shoot and not detected_enemies.empty():
 #		var target = get_tree().get_root().get_node_or_null(detected_enemies.pop_front())
@@ -42,6 +38,4 @@ func choose_target():
 			selected_enemy = enemy
 			min_dist = d
 	return selected_enemy
-		
-		
 		

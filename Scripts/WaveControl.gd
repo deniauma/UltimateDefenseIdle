@@ -62,10 +62,13 @@ func on_enemy_die():
 func _physics_process(delta):
 	wave_progress.value = wave_size - wave_remaining
 	if GameState.hp == 0:
-		on_prev_wave_click()
-		GameState.hp = GameState.total_hp
-		on_farming_mode_click(true)
-		farming_toggle.pressed = true
+		if GameState.current_wave == 1:
+			prepare_wave(1)
+		else:
+			on_prev_wave_click()
+			GameState.hp = GameState.total_hp
+			on_farming_mode_click(true)
+			farming_toggle.pressed = true
 	if GameState.current_wave < GameState.max_wave or wave_remaining == 0:
 		next_btn.disabled = false
 		if not farming:
