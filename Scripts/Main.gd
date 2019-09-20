@@ -1,13 +1,22 @@
 extends Node2D
 
+var game_save = GameSave.new()
 
 func _ready():
 	GameState.update_player_stats()
 	$Player.connect("body_entered", self, "on_player_contact")
 	$HUD/WaveControl.spawn_in_tree = $WaveManager
 	update_ui_hp()
-	var game_save = GameSave.new()
+	$HUD/SaveBtn.connect("pressed", self, "on_save_click")
+	$HUD/LoadBtn.connect("pressed", self, "on_load_click")
+	#game_save.load_game()
+	
+func on_save_click():
 	game_save.save_game()
+	
+func on_load_click():
+	game_save.load_game()
+	get_tree().call_group("upgrades_ui", "update_ui")
 	
 func _physics_process(delta):
 	$HUD/EnemiesDestroyed/Number.text = str(GameState.destroyed_enemies)

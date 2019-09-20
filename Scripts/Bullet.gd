@@ -14,12 +14,14 @@ func _ready():
 func _physics_process(delta):
 	if velocity.x == 0 and velocity.y == 0:
 		velocity = (target - global_position).normalized() * speed
-	rotation = Vector2(0, 1).angle_to(velocity)
+	rotation = Vector2(0, -1).angle_to(velocity)
 	if (target - global_position).length() > 1:
 		velocity = move_and_slide(velocity)
+	else:
+		self_destroy()
 
 
-func on_hit(body):
+func on_hit(body: Enemy):
 	for enemy in $AoE.get_overlapping_bodies():
 		enemy.take_damage(damage)
 	#body.take_damage(damage)
