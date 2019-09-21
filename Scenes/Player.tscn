@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/DetectCircle.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.4169, 30.8055 )
@@ -25,3 +26,6 @@ shape = SubResource( 2 )
 [node name="AttackDelay" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="DetectCircle" type="Node2D" parent="."]
+script = ExtResource( 3 )

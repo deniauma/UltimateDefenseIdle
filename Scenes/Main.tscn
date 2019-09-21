@@ -136,3 +136,7 @@ text = "Load"
 [node name="WaveManager" type="Node2D" parent="." groups=[
 "WaveSpawn",
 ]]
+
+[node name="Autosave" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true

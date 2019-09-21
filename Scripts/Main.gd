@@ -9,7 +9,11 @@ func _ready():
 	update_ui_hp()
 	$HUD/SaveBtn.connect("pressed", self, "on_save_click")
 	$HUD/LoadBtn.connect("pressed", self, "on_load_click")
+	$Autosave.connect("timeout", self, "autosave")
 	#game_save.load_game()
+	
+func autosave():
+	game_save.save_game()
 	
 func on_save_click():
 	game_save.save_game()

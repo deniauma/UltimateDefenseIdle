@@ -2,7 +2,7 @@ extends Area2D
 
 const bullet = preload("res://Scenes/Bullet.tscn")
 
-onready var detect_radius = $AreaDetection/AreaRadius.shape.radius
+onready var detect_circle = $DetectCircle
 
 func _ready():
 	add_to_group("player")
@@ -10,6 +10,8 @@ func _ready():
 	
 func _physics_process(delta):
 	$AreaDetection/AreaRadius.shape.radius = GameState.player_radius
+	detect_circle.radius = GameState.player_radius
+	detect_circle.update()
 	$AttackDelay.wait_time = GameState.player_attack_delay
 	
 func attack_enemy():
