@@ -2,7 +2,7 @@ extends Node
 
 var destroyed_enemies = 0
 var gold = 10000
-var max_wave = 1
+var max_wave = 100
 var current_wave = 1
 var hp = 1
 var def = 0
@@ -15,6 +15,7 @@ var enemy_base_hp = 5
 var enemy_base_damage = 1
 var enemy_base_speed = 50
 var wave_base_density = 10
+var wave_base_spawn_rate = 1.0
 
 #Attack upgrades
 var upg_proj_dmg = Upgrade.new("Projectile damage", 5, 10, 1)
@@ -27,13 +28,19 @@ var upg_hp = Upgrade.new("Tower HP", 1, 10, 1)
 var upg_def = Upgrade.new("Damage reduction", 0, 20, 1, 1.20)
 
 func get_wave_hp(wave):
-	return floor(enemy_base_hp * pow(1.10, wave))
+	return floor(enemy_base_hp * pow(1.05, wave))
 	
 func get_wave_damage(wave):
-	return floor(enemy_base_damage * pow(1.10, wave))
+	return floor(enemy_base_damage + pow(1.05, wave))
+
+func get_wave_speed(wave):
+	return floor(enemy_base_speed + 1.05*floor(wave/10))
 	
 func get_wave_density(wave):
 	return wave_base_density + floor(wave/10)
+	
+func get_wave_spawn_rate(wave):
+	return wave_base_spawn_rate - 0.05*floor(wave/10)
 
 func update_player_stats():
 	player_proj_dmg = upg_proj_dmg.get_current_total_value()

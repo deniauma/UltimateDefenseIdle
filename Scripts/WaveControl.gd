@@ -8,6 +8,7 @@ const spawned_enemy = preload("res://Scenes/Enemy.tscn")
 var wave_hp = GameState.enemy_base_hp
 var wave_damage = 1
 var wave_size = 5
+var wave_speed = 50
 var wave_remaining = 10
 var spawned = 0
 var farming = false
@@ -33,6 +34,7 @@ func prepare_wave(level):
 	wave_hp = GameState.get_wave_hp(level)
 	wave_damage = GameState.get_wave_damage(level)
 	wave_size = GameState.get_wave_density(level)
+	wave_speed = GameState.get_wave_speed(level)
 	GameState.current_wave = level
 	wave_progress.max_value = wave_size
 	wave_progress.value = 0
@@ -41,16 +43,18 @@ func prepare_wave(level):
 	wave_remaining = wave_size
 	spawned = 0
 	farming_toggle.pressed = false
+	spawner.wait_time = GameState.get_wave_spawn_rate(level)
 	spawner.start()
 	
 func spawn():
 	var enemy = spawned_enemy.instance()
 	enemy.connect("die", self, "on_enemy_die")
-	enemy.position.x = player.position.x + 400*cos(rand_range(0, 360))
-	enemy.position.y = player.position.y + 400*sin(rand_range(0, 360))
+	enemy.position.x = player.position.x + 600*cos(rand_range(0, 360))
+	enemy.position.y = player.position.y + 600*sin(rand_range(0, 360))
 	enemy.target = player.position
 	enemy.hp = wave_hp
 	enemy.damage = wave_damage
+	enemy.speed = wave_speed
 	spawn_in_tree.add_child(enemy) #get_tree().get_root().add_child(enemy)
 	spawned += 1
 	if spawned >= wave_size and not farming:
