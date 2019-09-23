@@ -10,6 +10,7 @@ var wave_damage = 1
 var wave_size = 5
 var wave_speed = 50
 var wave_remaining = 10
+var wave_gold_earned_per_kill = 1
 var spawned = 0
 var farming = false
 var spawn_in_tree: Node2D
@@ -35,6 +36,7 @@ func prepare_wave(level):
 	wave_damage = GameState.get_wave_damage(level)
 	wave_size = GameState.get_wave_density(level)
 	wave_speed = GameState.get_wave_speed(level)
+	wave_gold_earned_per_kill = GameState.get_gold_per_kill(level)
 	GameState.current_wave = level
 	wave_progress.max_value = wave_size
 	wave_progress.value = 0
@@ -55,6 +57,7 @@ func spawn():
 	enemy.hp = wave_hp
 	enemy.damage = wave_damage
 	enemy.speed = wave_speed
+	enemy.gold_earned = wave_gold_earned_per_kill
 	spawn_in_tree.add_child(enemy) #get_tree().get_root().add_child(enemy)
 	spawned += 1
 	if spawned >= wave_size and not farming:

@@ -9,6 +9,7 @@ var damage = 1
 var speed = GameState.enemy_base_speed
 var target = Vector2()
 var velocity = Vector2()
+var gold_earned = 1
 
 func _ready():
 	add_to_group("enemies")
@@ -27,5 +28,6 @@ func take_damage(damage):
 	if hp == 0:
 		emit_signal("die")
 		GameState.destroyed_enemies += 1
+		GameState.gold += gold_earned
 		queue_free()
 

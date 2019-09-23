@@ -7,7 +7,7 @@
 extents = Vector2( 6.21915, 12.5194 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 100.0
+radius = 15.0
 
 [node name="Bullet" type="KinematicBody2D"]
 collision_layer = 4
