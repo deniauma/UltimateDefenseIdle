@@ -1,14 +1,16 @@
 class_name Upgrade
 
 var name: String
+var unit: String
 var base_value: float
 var base_price: int
 var value_per_level: float
 var multiplier: float
 var level: int = 0
 
-func _init(name:String, baseValue: float, basePrice: int, vPerLvl: float, multiply: float = 1.10):
+func _init(name:String, unit: String, baseValue: float, basePrice: int, vPerLvl: float, multiply: float = 1.10):
 	self.name = name
+	self.unit = unit
 	base_value = baseValue
 	base_price = basePrice
 	value_per_level = vPerLvl

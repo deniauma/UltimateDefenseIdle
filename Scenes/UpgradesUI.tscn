@@ -31,7 +31,7 @@ rect_min_size = Vector2( 500, 300 )
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 496.0
-margin_bottom = 296.0
+margin_bottom = 300.0
 tab_align = 0
 
 [node name="Attack" type="VBoxContainer" parent="PopupPanel/TabContainer"]
@@ -44,19 +44,19 @@ margin_bottom = -4.0
 custom_constants/separation = 20
 
 [node name="ProjDmg" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
-margin_bottom = 32.0
+margin_bottom = 50.0
 
 [node name="ProjSpd" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
-margin_top = 52.0
-margin_bottom = 84.0
+margin_top = 70.0
+margin_bottom = 120.0
 
 [node name="DetectRadius" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
-margin_top = 104.0
-margin_bottom = 136.0
+margin_top = 140.0
+margin_bottom = 190.0
 
 [node name="AtkDelay" parent="PopupPanel/TabContainer/Attack" instance=ExtResource( 2 )]
-margin_top = 156.0
-margin_bottom = 188.0
+margin_top = 210.0
+margin_bottom = 260.0
 
 [node name="Defense" type="VBoxContainer" parent="PopupPanel/TabContainer"]
 visible = false

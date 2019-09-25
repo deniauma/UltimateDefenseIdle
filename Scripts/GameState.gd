@@ -20,14 +20,14 @@ var wave_base_density = 10
 var wave_base_spawn_rate = 1.0
 
 #Attack upgrades
-var upg_proj_dmg = Upgrade.new("Projectile damage", 5, 10, 1)
-var upg_proj_speed = Upgrade.new("Projectile speed", 400, 10, 1)
-var upg_detect_radius = Upgrade.new("Detection radius", 200, 10, 1)
-var upg_attack_delay = Upgrade.new("Attack delay", 1.0, 15, -0.01)
+var upg_proj_dmg = Upgrade.new("Projectile damage", "dmg", 5, 10, 1)
+var upg_proj_speed = Upgrade.new("Projectile speed", "spd", 400, 10, 1)
+var upg_detect_radius = Upgrade.new("Detection radius", "radius", 200, 10, 1)
+var upg_attack_delay = Upgrade.new("Attack delay", "sec", 1.0, 15, -0.01)
 
 #Defense upgrades
-var upg_hp = Upgrade.new("Tower HP", 1, 10, 1)
-var upg_def = Upgrade.new("Damage reduction", 0, 20, 1, 1.20)
+var upg_hp = Upgrade.new("Tower HP", "hp", 1, 10, 1)
+var upg_def = Upgrade.new("Damage reduction", "dmg red", 0, 20, 1, 1.20)
 
 func get_wave_hp(wave):
 	return floor(enemy_base_hp * pow(1.05, wave))
